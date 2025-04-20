@@ -1,0 +1,29 @@
+function fiboEvenSum(n) {
+  let firstNumberInSeries=1;
+  let secondNumberInSeries=2;
+  let newFibonacciNumber=firstNumberInSeries+secondNumberInSeries;
+  let summatoryOfFibonacciNumber=2;
+  let bufferBetweenNewFibonacciNumberAndFormerFibonacciNumber=newFibonacciNumber;
+  let formerFibonacciNumber=newFibonacciNumber;
+
+newFibonacciNumber=newFibonacciNumber+secondNumberInSeries;
+bufferBetweenNewFibonacciNumberAndFormerFibonacciNumber=formerFibonacciNumber;
+formerFibonacciNumber=newFibonacciNumber;
+
+    while(newFibonacciNumber<=n){
+        newFibonacciNumber=newFibonacciNumber+bufferBetweenNewFibonacciNumberAndFormerFibonacciNumber;
+        
+            if(newFibonacciNumber%2==0){
+                summatoryOfFibonacciNumber=summatoryOfFibonacciNumber+newFibonacciNumber
+            };
+
+        bufferBetweenNewFibonacciNumberAndFormerFibonacciNumber=formerFibonacciNumber;
+        formerFibonacciNumber=newFibonacciNumber;
+
+    }
+
+  return summatoryOfFibonacciNumber;
+  
+  }
+
+  console.log(fiboEvenSum(4000000));
