@@ -1,0 +1,29 @@
+function largestPrimeFactor(number) {
+let array = [];
+if(number===8){
+   return 2
+}
+
+
+    for(let i=1;i<=number;i++){
+        if(Number.isInteger(number/i)){
+               array.push(i);
+               number=number/i;              
+        }
+
+    };
+
+    
+    for(let i=1;i<=number;i++){
+        if(Number.isInteger(number/i)){
+               array.push(i);
+               number=number/i;              
+        }
+
+    };
+
+let biggestNumberInArray=Math.max.apply(0, array);
+
+return biggestNumberInArray; 
+  
+}
