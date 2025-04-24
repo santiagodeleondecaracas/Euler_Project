@@ -1,0 +1,70 @@
+function largestPalindromeProduct(n) {
+       
+let arrayOfNines=[1];
+let startArray=[9];
+    for(let i = 0;i<n;i++){
+         arrayOfNines.push(0);
+    };
+
+    for(let i = 0;i<n-1;i++){
+         startArray.push(0);
+    };
+  let limit= parseInt(arrayOfNines.join(''));
+  let start=parseInt(startArray.join(''));
+    console.log(limit,start)
+
+
+//comparison
+let possiblePalindromeNumber = 0;
+let possiblePalindromeString='';
+let firstHalfOfPossiblePalindromeArrayOfStrings=[];
+let secondHalfOfPossiblePalindromeArrayOfStrings=[];
+let possiblePalindromeArrayOfStrings=[];
+let counter=0;
+let biggestPalindrome=0;
+                  for(let i = start;i<limit;i++){
+                        for(let j = start;j<limit;j++){
+                              if(i<=j){
+                                        possiblePalindromeNumber = 0;
+                                        possiblePalindromeString='';
+                                        firstHalfOfPossiblePalindromeArrayOfStrings=[];
+                                        secondHalfOfPossiblePalindromeArrayOfStrings=[];
+                                        possiblePalindromeArrayOfStrings=[];
+                                        possiblePalindromeNumber=i*j;
+                                        counter=0;
+                                       // console.log("i: ",i,"j: ",j,i*j)
+                                        possiblePalindromeString=possiblePalindromeNumber.toString();
+                                        for(let i = 0;i<Math.floor(possiblePalindromeString.length/2);i++){
+                                              firstHalfOfPossiblePalindromeArrayOfStrings.push(possiblePalindromeString[i]);
+                                        };
+
+                                        
+
+                                        for(let i = possiblePalindromeString.length-1;i>=Math.floor(possiblePalindromeString.length/2);i--){
+                                              secondHalfOfPossiblePalindromeArrayOfStrings.push(possiblePalindromeString[i]);
+                                        };
+
+                                        
+
+                                        for(let i = 0;i<firstHalfOfPossiblePalindromeArrayOfStrings.length;i++){
+                                              if(firstHalfOfPossiblePalindromeArrayOfStrings[i]==secondHalfOfPossiblePalindromeArrayOfStrings[i]){
+                                                          counter=counter+1;
+                                              };
+
+                                        };
+
+                                        if(counter===firstHalfOfPossiblePalindromeArrayOfStrings.length){
+                                                    if(possiblePalindromeNumber>biggestPalindrome){
+                                                            biggestPalindrome=possiblePalindromeNumber;
+                                                    };
+                                                          
+                                            };
+                                        };
+                              };
+                              
+                        };
+  
+  return biggestPalindrome
+};
+
+console.log(largestPalindromeProduct(3));
