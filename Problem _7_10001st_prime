@@ -1,0 +1,41 @@
+Problem 7: 10001st prime
+By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.
+
+What is the nth prime number?
+
+function nthPrime(n) {
+let listOfNaturalNumbers=[];
+let newLimit=1000000;
+let primeNumber=2;
+let quantityOfPrimeNumbers=100//This is hipothetycal.
+let counter=0;
+  for(let i = 0;i<newLimit;i=i+1){
+      listOfNaturalNumbers.push(i);
+  };
+
+  
+
+  while(counter<quantityOfPrimeNumbers){
+    for(let i=primeNumber+primeNumber;i<listOfNaturalNumbers.length;i=i+primeNumber){
+             if(listOfNaturalNumbers[i]%primeNumber==0){
+                    listOfNaturalNumbers[i]=0;
+             };
+  };
+
+  for(let i=0;i<listOfNaturalNumbers.length;i++){
+          if(listOfNaturalNumbers[i]>primeNumber){
+                  primeNumber=listOfNaturalNumbers[i];
+                  break;
+          }
+  };
+              counter=counter+1;
+  };
+  
+   const filteredArray = listOfNaturalNumbers.filter(element => element !== 0);
+  
+  return filteredArray[n];
+}
+
+nthPrime(10001);
+
+
