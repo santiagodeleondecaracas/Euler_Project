@@ -1,0 +1,64 @@
+function quadraticPrimes(range) {
+let limit=range;
+let a=0;
+let b=0;
+let result=0;
+let n=0;
+let counterOfPrimes=0;
+let highestPrimeCount=0;
+let coefficientA=0;
+let coefficientB=0;
+let coefficientsMultiplication=0;
+
+  for(let i = - limit+ 1 ;i<limit;i=i+2){
+      for(let j = - limit+1;j<=limit;j=j+2){
+         // console.log(i,j)
+            a=i;
+            b=j;
+           
+            while(n<40){
+               result=n*n+n*a+b
+               //console.log(result)
+               //console.log("a",a,"b",b,"Result: ",result)
+                function isPrime (num) {
+                            if (num <= 1) {
+                                return false;
+                            }
+                            // The check for the number 2 and 3
+                            if (num <= 3) {
+                                return true; 
+                            }
+                            if (num % 2 == 0 || num % 3 == 0) {
+                                return false;
+                            }
+                            for (var i = 5; i * i <= num; i = i + 6) {
+                                if (num % i == 0 || num % (i + 2) == 0) {
+                                    return false;
+                                }
+                            }
+                            return true;
+                        }
+
+               if(isPrime(result)){
+                  counterOfPrimes = counterOfPrimes + 1;
+                };
+               n=n+1;
+              
+            };
+            //console.log("counterOfPrimes, counterOfPrimes)
+       
+            if(counterOfPrimes>highestPrimeCount){
+              
+              coefficientA=a;
+              coefficientB=b;
+              coefficientsMultiplication=coefficientA*coefficientB;
+              highestPrimeCount=counterOfPrimes;
+       };
+       counterOfPrimes=0;
+       n=0;          
+       
+    };
+  };
+  return coefficientsMultiplication;
+};
+console.log(quadraticPrimes(200))
