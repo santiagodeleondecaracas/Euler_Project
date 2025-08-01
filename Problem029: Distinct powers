@@ -1,0 +1,19 @@
+function distinctPowers(n) {
+  let array=[];
+
+let summatory=0;
+for(let i=2;i<=n;i++){
+    for(let j=2;j<=n;j++){
+         
+         array.push(i**j) ;  
+  };
+};
+let sortedArray=array.sort((a, b) => a - b);
+let uniq = [...new Set(sortedArray)];
+summatory=uniq.length;
+
+
+  return summatory;
+}
+
+distinctPowers(30);
