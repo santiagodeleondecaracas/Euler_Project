@@ -1,0 +1,12 @@
+function spiralDiagonals(n) {
+  
+
+let numero=((n-1)/2);
+let equation= (3 + 2 * numero * ( 8 * numero * numero + 15 * numero +13)) /3;
+
+
+
+  return equation;
+}
+
+console.log(spiralDiagonals(5));
