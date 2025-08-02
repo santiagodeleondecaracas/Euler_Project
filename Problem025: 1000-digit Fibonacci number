@@ -1,0 +1,29 @@
+let startOfSeries=0;
+let firstNumber = 1
+let secondNumber = startOfSeries +  firstNumber;
+let thirdNumber = firstNumber + secondNumber;
+let temporalNumber = 0;
+
+let currentNumber=0;
+let formerNumber=0;
+let nextNumber = 0;
+let positionInSeries = 0;
+let limitInSeries=10000;
+
+currentNumber=thirdNumber;
+formerNumber=secondNumber;
+nextNumber = formerNumber + currentNumber;
+    
+    while(positionInSeries<limitInSeries){
+        temporalNumber = currentNumber; 
+        currentNumber = nextNumber;
+        formerNumber = temporalNumber;
+        nextNumber = currentNumber + formerNumber;  
+        positionInSeries = positionInSeries + 1;
+
+        if(currentNumber.toString().length==20){
+            console.log("positionInSeries: ",positionInSeries + 3,"Current Number: ",currentNumber, "Temporal Number: ",temporalNumber, "Former Number: ",formerNumber )
+            break;
+        }
+
+    };
