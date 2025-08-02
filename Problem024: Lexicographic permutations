@@ -1,0 +1,55 @@
+let array = [0,1,2,3,4,5,6,7,8,9];
+         let kValue = 0;
+         let kIndex = 0;
+         let lValue = 0;
+         let lIndex = 0;
+         let buffer = 0;
+         let mark = 0;
+         let reversionStartIndex = 0;
+         let arrayLength = array.length;
+         let totalOfPermutations = 0;
+         let limitOfPermutations = 999999;
+         let jointArrayNumber=0;                                 
+                                 while(totalOfPermutations<limitOfPermutations){
+                                    for(let k = 0;k<array.length;k++){
+                                        if(array[k]<array[k+1]){
+                                              kValue = array[k];
+                                              kIndex = k;
+                                      };
+                                  };
+  
+                              for(let l = 0;l<array.length;l++){
+                                      if(array[kIndex]<array[l]){
+                                          lValue=array[l];
+                                          lIndex = l;
+                                  };
+                              };
+                              
+                          buffer = array[kIndex]; 
+                          array[kIndex] = array[lIndex];
+                          array[lIndex] = buffer;
+  
+                          reversionStartIndex = kIndex+1;
+                
+                           for(let i = reversionStartIndex;i<reversionStartIndex+(Math.floor((array.length-reversionStartIndex)/2));i++){
+                              buffer=array[i];
+                              array[i]=array[arrayLength-1-mark];
+                              array[arrayLength-1-mark] = buffer;
+                              mark = mark + 1; 
+                             };
+                 
+                             kValue = 0;
+                             kIndex = 0;
+                             lValue = 0;
+                             lIndex = 0;
+                             buffer = 0;
+                             mark = 0;
+                             reversionStartIndex = 0;
+                             totalOfPermutations = totalOfPermutations + 1;
+
+                            };
+
+                            jointArrayNumber=Number(array.join(""));
+
+                                   
+               console.log(jointArrayNumber);
