@@ -1,0 +1,11 @@
+let counterOfSundays=0;	
+let year=1901;
+let month=0;
+let endYear=2000;		
+		for(let year = 1901;year<=endYear;year++){
+			for(let month = 0;month<12;month++){
+				if(new Date(year,month,1).getDay()==0){
+                      counterOfSundays = counterOfSundays + 1; 
+				};
+             };
+         };	
