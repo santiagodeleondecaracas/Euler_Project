@@ -1,0 +1,51 @@
+  let numberAString = '' 
+  let numberBString = '';
+  let stringNumberAWithElementsThatAreNotCommonWithAtringNumberB = '';
+  let stringNumberBWithElementsThatAreNotCommonWithAtringNumberA = '';
+  let fromNumberToStringA = 0;
+  let fromNumberToStringB = 0;
+  let arrayOfPrimeNumbers = [ 2, 5, 11, 17, 23, 29, 41, 47, 53, 59, 71, 83, 89, 97 ];
+  let resultOfDivisionBetweenNumberAAndNumberB = 0;
+  let arrayOfNonTrivialFractions = [];
+  let arrayOfDenominatorPrimeNumbers = [];
+  let denominator = 0;
+  let greatestCommonDivisor = 1;
+
+  for (let i = 10; i < 100; i = i + 1) {
+    for (let j = 10; j < 100; j = j + 1) {
+      numberAString = i.toString().split('');
+      numberBString = j.toString().split('');
+      stringNumberAWithElementsThatAreNotCommonWithAtringNumberB =
+          numberAString.filter(value = > !numberBString.includes(value));
+      stringNumberBWithElementsThatAreNotCommonWithAtringNumberA =
+          numberBString.filter(value = > !numberAString.includes(value));
+      fromNumberToStringA =
+          Number(stringNumberAWithElementsThatAreNotCommonWithAtringNumberB);
+      fromNumberToStringB =
+          Number(stringNumberBWithElementsThatAreNotCommonWithAtringNumberA);
+      resultOfDivisionBetweenNumberAAndNumberB =
+          fromNumberToStringA /
+          fromNumberToStringB if (i / j ==
+                                  resultOfDivisionBetweenNumberAAndNumberB) {
+        if (i / j % 1 != 0 && j % 10 != 0 && i / j < 1) {
+          arrayOfNonTrivialFractions.push("Denominator: ", j);
+          denominator = j;
+          for (let i = 2; i < denominator; i++) {
+            if (denominator % i == 0 && arrayOfPrimeNumbers.includes(i)) {
+              arrayOfDenominatorPrimeNumbers.push(i);
+            };
+          };
+        };
+      };
+    };
+  };
+
+  for (let i = 0; i < arrayOfDenominatorPrimeNumbers.length; i++) {
+    greatestCommonDivisor =
+        greatestCommonDivisor * arrayOfDenominatorPrimeNumbers[i];
+  };
+
+  return greatestCommonDivisor
+}
+
+digitCancellingFractions();
