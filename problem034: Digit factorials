@@ -1,0 +1,39 @@
+function digitFactorial() {
+  let number = 3;
+  let numberString = number.toString().split('');
+  let factorial = 1;
+  let sumOfFactorials = 0;
+  let limit = 50000;
+  let arrayOfSpecialNumbers = [];
+  let sumOfSpecialNumbers = 0;
+
+  while (number < limit) {
+
+    numberString = number.toString().split('');
+
+    for (let i = 0; i < numberString.length; i++) {
+      for (let j = 1; j <= Number(numberString[i]); j++) {
+        factorial = factorial * j
+      };
+      sumOfFactorials = sumOfFactorials + factorial;
+      factorial = 1;
+    };
+    if (sumOfFactorials == number) {
+      arrayOfSpecialNumbers.push(number);
+    };
+    sumOfFactorials = 0 number = number + 1;
+  };
+
+  for (let i = 0; i < arrayOfSpecialNumbers.length; i++) {
+
+    sumOfSpecialNumbers = sumOfSpecialNumbers + arrayOfSpecialNumbers[i];
+
+  };
+
+  return {
+    sum: sumOfSpecialNumbers,
+    numbers: arrayOfSpecialNumbers
+  }
+}
+
+console.log(digitFactorial());
