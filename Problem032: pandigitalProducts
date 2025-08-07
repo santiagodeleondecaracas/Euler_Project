@@ -1,0 +1,56 @@
+function pandigitalProducts(n) {
+
+  let base=10;
+let limit=100;
+let a=39;
+let b=186;
+let jointNumbers = 0;
+let arrayOfNumbers=[];
+let elementsOfAString=[];
+let arrayOfNumbersFrom1toN=[];
+let sortedArray=[];
+let comparisonArray=[];
+let arrayOfProducts=[];
+let uniq = [];
+let summatoryOfElementsOfAnArray=0;
+
+for(let i =1;i<n+1;i++){
+     comparisonArray.push(i)
+};
+
+for(let i = 1;i<2000;i=i+1){
+     for(let j = 1;j<70;j=j+1){
+             a = i;
+             b = j;
+             if(a>=b){
+                    arrayOfNumbers.push(a,b,(a*b))
+                          
+             jointNumbers= Number(arrayOfNumbers.join("")) 
+           elementsOfAString = jointNumbers.toString().split('');
+           arrayOfNumbersFrom1toN = elementsOfAString.map(Number)
+           sortedArray=arrayOfNumbersFrom1toN.sort();
+          // console.log("Comparison Array: ",comparisonArray)
+          // console.log("Sorted Array: ",sortedArray)
+           if(comparisonArray.join(',')===sortedArray.join(',')){
+                  arrayOfProducts.push((a*b))
+           };
+           arrayOfNumbers=[];
+           elementsOfAString=[];
+           arrayOfNumbersFrom1toN=[];
+           sortedArray=[]
+          
+                };
+};
+ uniq = [...new Set(arrayOfProducts)];
+ summatoryOfElementsOfAnArray=0;
+for(let i=0;i<uniq.length;i++){
+     summatoryOfElementsOfAnArray=summatoryOfElementsOfAnArray+uniq[i];
+
+}
+
+             }
+             return summatoryOfElementsOfAnArray;
+
+}
+
+console.log(pandigitalProducts(8));
