@@ -1,0 +1,99 @@
+function isPrime(n){
+         let number=n;
+         let factorsNumberOfANumber=0;
+         if(number>100){
+               for(let i = 2;i<Math.floor(Math.sqrt(number));i++){
+                     if(number%i==0){
+                        factorsNumberOfANumber = factorsNumberOfANumber + 1;
+
+                     };
+                     if(factorsNumberOfANumber>1){
+                            break;
+                     };
+                  };
+                     if(factorsNumberOfANumber<1){
+                       
+                        return number;
+                                            };
+
+                     
+      
+         }else{
+               for(let i = 2;i<number;i++){
+                     if(number%i==0){
+                           factorsNumberOfANumber = factorsNumberOfANumber + 1;
+
+                     };
+
+                     if(factorsNumberOfANumber>1){
+                            break;
+                     };
+                };
+
+               if(factorsNumberOfANumber<1){
+                  
+                  return number;
+                  
+               };
+
+         };
+
+     };
+
+function circularPrimes(n) {
+      let timesThatThePrimeNumberHasBeenRotatedAndItHasDemonstratedItIsAPrimeNumber=0;
+let rotations=0;
+let elementToPush=0;
+let rotationalNumbersFrom1toLimit=4; 
+let stringArray=[];
+let jointString='';
+let primeFromStringToNumber=0;
+let stringArraylength=0;
+let limit=n;  
+let arrayOfNumbers = [];
+let number = 11; 
+
+               while (number < limit) {
+                     if (isPrime(number)) {
+            stringArraylength = number.toString().split('').length;
+            stringArray = number.toString().split('');
+
+            
+               
+            while (rotations < stringArray.length) {
+                                      
+              // console.log(stringArray);        
+                elementToPush = stringArray.shift();
+                stringArray.push(elementToPush);
+
+
+                primeFromStringToNumber = Number(stringArray.join(''));
+                
+                if (isPrime(primeFromStringToNumber)) {
+                        
+                    timesThatThePrimeNumberHasBeenRotatedAndItHasDemonstratedItIsAPrimeNumber = timesThatThePrimeNumberHasBeenRotatedAndItHasDemonstratedItIsAPrimeNumber + 1;
+                                };
+                   
+                   rotations = rotations + 1;
+                    
+            };
+            
+            if (stringArraylength == timesThatThePrimeNumberHasBeenRotatedAndItHasDemonstratedItIsAPrimeNumber) {
+                //arrayOfNumbers.push(n);
+                rotationalNumbersFrom1toLimit = rotationalNumbersFrom1toLimit + 1;
+                
+            };
+            rotations = 0;
+       
+            timesThatThePrimeNumberHasBeenRotatedAndItHasDemonstratedItIsAPrimeNumber=0;
+           
+         };
+          
+          
+                  number = number + 2;
+         };
+
+  return rotationalNumbersFrom1toLimit;
+}
+
+console.log(circularPrimes(100));
