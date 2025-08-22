@@ -1,0 +1,108 @@
+/*
+Problem 36: Double-base palindromes
+
+The decimal number, 585 = 10010010012 (binary), is palindromic in both bases.
+
+Find the sum of all numbers, less than n, whereas 1000 ≤ n ≤ 1000000, which are palindromic in base 10 and base 2.
+
+(Please note that the palindromic number, in either base, may not include leading zeros.)
+
+Tests
+
+Test 1. doubleBasePalindromes(1000) should return a number.
+Test 2. doubleBasePalindromes(1000) should return 1772.
+Test 3. doubleBasePalindromes(50000) should return 105795.
+Test 4. doubleBasePalindromes(500000) should return 286602.
+Test 5. doubleBasePalindromes(1000000) should return 872187.
+ */
+
+function isThisStringAPalindrome(n) {
+    let string = n
+    let timesTheyhaveBeenEqual = 0;
+    for (let i = string.length - 1; i >= 0; i--) {
+        if (string[i] == string[-i + string.length - 1]) {
+            timesTheyhaveBeenEqual = timesTheyhaveBeenEqual + 1
+        } else {
+            break;
+        };
+    };
+
+    if (timesTheyhaveBeenEqual === string.length) {
+        return true;
+        console.log('We have a palindrome')
+    };
+
+};
+
+
+function isThisNumberAPalindrome(n) {
+    let number = n;
+    let numberString = number.toString();
+    let timesTheyhaveBeenEqual = 0;
+    for (let i = numberString.length - 1; i >= 0; i--) {
+        if (numberString[i] == numberString[-i + numberString.length - 1]) {
+            timesTheyhaveBeenEqual = timesTheyhaveBeenEqual + 1
+        } else {
+            break;
+        };
+    };
+
+    if (timesTheyhaveBeenEqual === numberString.length) {
+        return true;
+        console.log('We have a palindrome')
+    };
+
+};
+
+function fromDecimalToBinary(n) {
+    let arrayOfBinaryPowersInDecimalFromPower1toPower20 = [1048576, 524288, 262144, 131072, 65536, 32768, 16384, 8192, 4096, 2048, 1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1]
+    let decimalNumber = n;
+    let arrayOfBinaryNumbers = [];
+    let referenceNumber = decimalNumber;
+    let binaryNumberString = '';
+
+    for (let i = 0; i < arrayOfBinaryPowersInDecimalFromPower1toPower20.length; i++) {
+        if (referenceNumber >= arrayOfBinaryPowersInDecimalFromPower1toPower20[i]) {
+            referenceNumber = referenceNumber - arrayOfBinaryPowersInDecimalFromPower1toPower20[i];
+            arrayOfBinaryNumbers.push(1);
+        } else {
+            arrayOfBinaryNumbers.push(0);
+        };
+    }
+    // console.log(arrayOfBinaryNumbers)number
+    return binaryNumberString = arrayOfBinaryNumbers.join("").replace(/^0+/, "")
+
+}
+
+//console.log(fromDecimalToBinary(888))
+//888= 1101111000
+
+
+function isThisNumberAPalindromeInBinaryAndDecimal(n) {
+    if (isThisNumberAPalindrome(n) && isThisStringAPalindrome(fromDecimalToBinary(n))) {
+
+
+
+        return true;
+    };
+};
+
+//console.log(isThisNumberAPalindromeInBinaryAndDecimal(585))
+
+function doubleBasePalindromes(n) {
+    let limit = n;
+    let summatoryOfPalindromesInBinaryAndDecimal = 0;
+    let digit = 0;
+
+    while (digit <= limit) {
+        if (isThisNumberAPalindromeInBinaryAndDecimal(digit)) {
+            //console.log(digit);
+            summatoryOfPalindromesInBinaryAndDecimal = summatoryOfPalindromesInBinaryAndDecimal + digit;
+        };
+        digit = digit + 1;
+    };
+    return summatoryOfPalindromesInBinaryAndDecimal;
+
+};
+
+console.log(doubleBasePalindromes(1000000));
