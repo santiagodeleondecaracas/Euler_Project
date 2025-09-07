@@ -1,0 +1,36 @@
+'''
+Problem 9: Special Pythagorean triplet
+A Pythagorean triplet is a set of three natural numbers, a < b < c, for which,
+
+a2 + b2 = c2
+For example, 32 + 42 = 9 + 16 = 25 = 52.
+
+There exists exactly one Pythagorean triplet for which a + b + c = 1000. Find the product abc such that a + b + c = n.
+
+Tests:
+
+Test 1. specialPythagoreanTriplet(24) should return a number.
+Test 2. specialPythagoreanTriplet(24) should return 480.
+Test 3. specialPythagoreanTriplet(120) should return 49920, 55080 or 60000.
+Test 4. specialPythagoreanTriplet(1000) should return 31875000.
+'''
+def specialPythagoreanTriplet(n):
+ c_In_Pythagorean_Triplet=0
+
+ for i in range(1,1001):
+    for j in range(1,1001):
+        if i<j:
+            #math.sqrt(num)
+           # print('i*i: ',i*i,'j*j: ',j*j,'Total Sum: ',j*j+i*i)
+            c_In_Pythagorean_Triplet=((i*i+j*j)** 0.5)
+            if c_In_Pythagorean_Triplet>j:
+              if j>i:
+              
+                 if i*i+j*j == c_In_Pythagorean_Triplet*c_In_Pythagorean_Triplet:
+                    if c_In_Pythagorean_Triplet % 1== 0:
+                     #print('A: ',i,'B:',j,'C:',c_In_Pythagorean_Triplet)
+                     if i + j + c_In_Pythagorean_Triplet==n:
+                       return i*j*c_In_Pythagorean_Triplet
+                       #print('A: ',i,'B:',j,'C:',c_In_Pythagorean_Triplet,'Product ABC: ',i*j*c_In_Pythagorean_Triplet)
+ 
+print(specialPythagoreanTriplet(1000))
