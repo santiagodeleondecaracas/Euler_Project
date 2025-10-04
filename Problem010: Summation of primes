@@ -1,0 +1,39 @@
+'''
+Problem 10: Summation of primes
+The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
+
+Find the sum of all the primes below n.
+
+Tests
+
+Test 1. primeSummation(17) should return a number.
+Test 2. primeSummation(17) should return 41.
+Test 3. primeSummation(2001) should return 277050.
+Test 4. primeSummation(140759) should return 873608362.
+Test 5. primeSummation(2000000) should return 142913828922.
+def primeSummation(n):
+'''
+    import math
+    
+    sum_of_prime_numbers = 2  # start with 2, the only even prime
+    number = 3                # start from 3
+    count_of_times_it_has_been_divided_by_a_number = 0
+
+    while number < n:
+    # Check divisibility up to sqrt(number)
+        for i in range(2, math.isqrt(number) + 1):
+            if number % i == 0:
+                count_of_times_it_has_been_divided_by_a_number += 1
+                break
+
+        if count_of_times_it_has_been_divided_by_a_number == 0:
+            sum_of_prime_numbers += number
+        # print(number, "is prime")
+
+    # Next odd number
+        number += 2
+        count_of_times_it_has_been_divided_by_a_number = 0
+
+    return sum_of_prime_numbers
+
+print(primeSummation(2000000))
